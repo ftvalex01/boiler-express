@@ -2,10 +2,6 @@ var express = require('express');
 const bodyParser = require('body-parser');
 var app = express();
 
-const note = {
-  "message":"Hello json"
-};
-
 app.use('/public', express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -25,14 +21,12 @@ app.get('/', (rq, rs) => {
 });
 
 
-app.get('/json', (rq, rs) => {
-
-  if(process.env.MESSAGE_STYLE == 'uppercase'){
-
-    note.message = note.message.toUpperCase();
-    
-  };
-
-  rs.json(note);
-  
+var message= 'Hello json';
+app.get("/json", (req, res) => {
+  if ( process.env['MESSAGE_STYLE'] === "uppercase") {
+      res.json({ "message": message.toUpperCase() });
+  }
+  else {
+    res.json({ "message": message });
+  }
 });
