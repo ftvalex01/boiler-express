@@ -59,7 +59,7 @@ app.get("/:word/echo", function (req, res) {
     const word = req.params.word;
     res.json({echo: word});
 });
-app.get("/name", function (req, res) {
+app.post("/name", function (req, res) {
 
     const firstName = req.body.first;
     const lastName = req.body.last;
