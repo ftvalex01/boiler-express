@@ -11,14 +11,20 @@ app.get("/", function(req, res) {
     res.sendFile(absolutePath);
 });
 
-app.get('/json', function (req, res) {
-    let responseMessage = "Hello json";
+const note = {
+    "message":"Hello json"
+  };
 
-    if (process.env.MESSAGE_STYLE === "uppercase") {
-        responseMessage = responseMessage.toUpperCase();
-    }
+app.get('/json', (rq, rs) => {
 
-    res.json({"message": responseMessage});
-});
+    if(process.env.MESSAGE_STYLE == 'uppercase'){
+  
+      note.message = note.message.toUpperCase();
+      
+    };
+  
+    rs.json(note);
+    
+  });
 
 module.exports = app;
