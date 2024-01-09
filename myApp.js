@@ -4,10 +4,12 @@ let express = require('express');
 let app = express();
 let indexPath = __dirname + "/views/index.html";
 let publicPath = __dirname + "/public";
-
+let bodyParser = require('body-parser');
 
 
 app.use("/public", express.static(publicPath));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.get("/", function (req, res) {
     res.sendFile(indexPath);
