@@ -12,7 +12,7 @@ app.get("/", function(req, res) {
 });
 
 const note = {
-    "message":"Hello json"
+    "message": "Hello json"
   };
 
 app.get('/json', (req, res) => {
